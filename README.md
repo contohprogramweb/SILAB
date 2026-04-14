@@ -1,132 +1,159 @@
-# SILAB - Sistem Informasi Lab Komputer
+# CodeIgniter 3.11 dengan AdminLTE 3
 
-Proyek CodeIgniter 3.1.11 telah disiapkan dengan struktur file yang lengkap.
+Sistem ini menggunakan CodeIgniter 3.11 dengan tema AdminLTE 3 untuk dashboard admin.
 
-## Struktur Direktori
+## Struktur File
 
 ```
-/workspace/
-├── index.php                 # Front controller (entry point)
-├── application/              # Direktori aplikasi utama
-│   ├── cache/                # Cache files
-│   ├── config/               # Konfigurasi aplikasi
-│   │   ├── config.php        # Konfigurasi utama
-│   │   ├── database.php      # Konfigurasi database
-│   │   ├── routes.php        # Routing configuration
-│   │   └── autoload.php      # Autoload configuration
-│   ├── controllers/          # Controller files
-│   │   └── Welcome.php       # Default controller
-│   ├── core/                 # Core classes
-│   │   ├── CodeIgniter.php   # Main framework file
-│   │   ├── Common.php        # Common functions
-│   │   ├── Loader.php        # Loader class
-│   │   ├── MY_Controller.php # Base controller
-│   │   └── MY_Model.php      # Base model
-│   ├── helpers/              # Helper files
-│   │   └── url_helper.php    # URL helper
-│   ├── hooks/                # Hooks files
-│   ├── language/             # Language files
-│   ├── libraries/            # Library files
-│   ├── logs/                 # Log files
-│   ├── models/               # Model files
-│   │   └── Sample_model.php  # Sample model
-│   ├── third_party/          # Third party libraries
-│   └── views/                # View files
-│       └── welcome_message.php  # Welcome view
-├── assets/                   # Asset files
-│   ├── css/                  # CSS files
-│   ├── js/                   # JavaScript files
-│   └── images/               # Image files
-├── system/                   # System directory
-│   └── core/                 # Core system files
-└── writable/                 # Writable directories
-    ├── cache/                # Cache directory
-    ├── logs/                 # Logs directory
-    ├── session/              # Session directory
-    └── uploads/              # Uploads directory
+application/
+├── assets/
+│   ├── css/
+│   │   └── custom.css
+│   ├── js/
+│   │   └── custom.js
+│   └── img/
+├── config/
+│   ├── routes.php (sudah dikonfigurasi)
+│   ├── database.php (konfigurasi database)
+│   └── config.php (konfigurasi base_url)
+├── controllers/
+│   ├── admin/
+│   │   └── Dashboard.php
+│   └── Auth.php
+├── core/
+│   └── Admin_Controller.php (base controller untuk admin)
+├── models/
+│   └── (buat model di sini)
+├── views/
+│   ├── templates/
+│   │   └── adminlte.php (template utama)
+│   ├── admin/
+│   │   └── dashboard_view.php
+│   └── auth/
+│       └── login_view.php
+└── helpers/
 ```
 
-## Cara Menggunakan
+## Konfigurasi
 
-### 1. Konfigurasi Database
-
+### 1. Database Configuration
 Edit file `application/config/database.php`:
 
 ```php
 $db['default'] = array(
+    'dsn'   => '',
     'hostname' => 'localhost',
     'username' => 'root',
     'password' => '',
     'database' => 'nama_database_anda',
     'dbdriver' => 'mysqli',
+    // ... konfigurasi lainnya
 );
 ```
 
-### 2. Konfigurasi Base URL
-
+### 2. Base URL Configuration
 Edit file `application/config/config.php`:
 
 ```php
-$config['base_url'] = 'http://localhost/project_anda/';
+$config['base_url'] = 'http://localhost/nama_project_anda/';
 ```
 
-### 3. Menjalankan Aplikasi
+## Login Credentials (Demo)
 
-Akses melalui browser:
-```
-http://localhost/project_anda/
-```
+- **Username**: admin
+- **Password**: admin123
+
+⚠️ **PENTING**: Ganti kredensial demo ini dengan sistem autentikasi database yang sebenarnya sebelum production!
 
 ## Fitur yang Tersedia
 
-- ✅ MVC Architecture
-- ✅ Database Connection (MySQLi)
-- ✅ Session Management
-- ✅ URL Routing
-- ✅ Helper Functions
-- ✅ Logging System
-- ✅ Error Handling
-- ✅ Security Features
+1. ✅ Template AdminLTE 3 (CDN)
+2. ✅ Login/Logout System
+3. ✅ Session Management
+4. ✅ Base Controller untuk Admin (Admin_Controller)
+5. ✅ Dashboard dengan statistik
+6. ✅ Responsive Design
+7. ✅ Font Awesome Icons
+8. ✅ Custom CSS & JS support
 
-## Contoh Penggunaan
+## Cara Menambahkan Halaman Baru
 
-### Controller
+### 1. Buat Controller
 ```php
-class Welcome extends CI_Controller {
+// application/controllers/admin/Users.php
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Users extends Admin_Controller {
     public function index() {
-        $data['title'] = 'Hello World';
-        $this->load->view('welcome_message', $data);
+        $data['page_title'] = 'User Management';
+        $this->render('admin/users_view', $data);
     }
 }
 ```
 
-### Model
+### 2. Buat View
 ```php
-class Sample_model extends CI_Model {
-    public function get_users() {
-        return $this->db->get('users');
+// application/views/admin/users_view.php
+<div class="card">
+    <div class="card-header">
+        <h3>User Management</h3>
+    </div>
+    <div class="card-body">
+        <!-- Konten Anda -->
+    </div>
+</div>
+```
+
+### 3. Tambahkan Route
+Edit `application/config/routes.php`:
+```php
+$route['admin/users'] = 'admin/users';
+```
+
+## Cara Menambahkan Model
+
+```php
+// application/models/User_model.php
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class User_model extends CI_Model {
+    
+    public function __construct() {
+        parent::__construct();
+        $this->load->database();
+    }
+    
+    public function get_all_users() {
+        return $this->db->get('users')->result();
+    }
+    
+    public function count_all() {
+        return $this->db->count_all('users');
     }
 }
 ```
 
-### View
-```php
-<h1><?php echo $title; ?></h1>
-<p>Selamat datang di CodeIgniter!</p>
-```
+## Dependencies (CDN)
 
-## Dokumentasi
+- AdminLTE 3.2: https://cdn.jsdelivr.net/npm/admin-lte@3.2
+- Bootstrap 4.6: https://cdn.jsdelivr.net/npm/bootstrap@4.6.1
+- jQuery 3.6: https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0
+- Font Awesome 5.15: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4
 
-- [CodeIgniter User Guide](https://codeigniter.com/userguide3/)
-- [CodeIgniter Forum](https://forum.codeigniter.com/)
-- [GitHub Repository](https://github.com/bcit-ci/CodeIgniter)
+## Development Tips
 
-## Requirements
+1. Selalu extend `Admin_Controller` untuk halaman admin yang memerlukan autentikasi
+2. Gunakan method `$this->render()` untuk menampilkan view dengan template
+3. Simpan file CSS custom di `assets/css/custom.css`
+4. Simpan file JS custom di `assets/js/custom.js`
+5. Untuk production, download AdminLTE dan simpan lokal di folder assets
 
-- PHP 5.6 atau lebih tinggi
-- MySQL 5.1 atau lebih tinggi
-- Web Server (Apache/Nginx)
+## Keamanan
 
-## License
-
-CodeIgniter is open-source software licensed under the MIT License.
+- Pastikan untuk mengimplementasikan password hashing (password_hash/password_verify)
+- Validasi semua input user
+- Implementasikan CSRF protection
+- Gunakan prepared statements untuk query database
+- Batasi akses berdasarkan role/user level

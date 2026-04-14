@@ -1,64 +1,50 @@
 ```
-# CodeIgniter specific
-application/logs/*
-writable/cache/*
-writable/logs/*
-writable/session/*
-writable/uploads/*
-
-# Environment
-.env
-.env.local
-.env.*
-
-# Dependencies
-vendor/
-
-# Logs
-*.log
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-*.tmp
-
 # Compiled and build artifacts
 *.pyc
 __pycache__/
 *.o
 *.obj
+dist/
+build/
+*.class
 *.exe
 *.dll
 *.so
 *.a
 *.out
 
-# Package managers
+# Dependencies
+.venv/
+venv/
 node_modules/
-.npm/
-.yarn/
-bower_components/
-
-# Build directories
-build/
-dist/
 target/
 .gradle/
-.cargo/
-.nuget/
+.mypy_cache/
+.pytest_cache/
 
-# Testing
-.coverage
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage
 coverage/
 htmlcov/
-.pytest_cache/
-.mypy_cache/
+.coverage
 
 # Compressed files
 *.zip
@@ -79,8 +65,4 @@ htmlcov/
 *.Z
 *.lz
 *.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
 ```

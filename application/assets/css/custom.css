@@ -1,0 +1,23 @@
+/* Custom CSS for AdminLTE */
+
+/* Add your custom styles here */
+.content-header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.card {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+}
+
+.small-box {
+    border-radius: 0.25rem;
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    display: block;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
