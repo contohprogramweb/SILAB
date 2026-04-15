@@ -79,6 +79,30 @@ if (!function_exists('redirect')) {
 
 // ------------------------------------------------------------------------
 
+if (!function_exists('asset_url')) {
+    /**
+     * Asset URL
+     *
+     * Returns the URL to an asset file (css, js, images, etc.)
+     *
+     * @param	string	$uri	Optional URI
+     * @return	string
+     */
+    function asset_url($uri = '')
+    {
+        $CI =& get_instance();
+        $assets_dir = $CI->config->item('assets_dir');
+        
+        if (empty($assets_dir)) {
+            $assets_dir = 'assets/';
+        }
+        
+        return base_url($assets_dir . $uri);
+    }
+}
+
+// ------------------------------------------------------------------------
+
 if (!function_exists('anchor')) {
     /**
      * Anchor Link

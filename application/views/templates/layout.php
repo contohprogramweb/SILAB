@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/css/adminlte.min.css">
   
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="<?php echo base_url('assets/css/custom.css'); ?>">
+  <link rel="stylesheet" href="<?php echo asset_url('css/custom.css'); ?>">
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -172,6 +172,6 @@
 <!-- AdminLTE App -->
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
 <!-- Custom JS -->
-<script src="<?php echo base_url('assets/js/custom.js'); ?>"></script>
+<script src="<?php echo asset_url('js/custom.js'); ?>"></script>
 </body>
 </html>
