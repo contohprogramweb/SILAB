@@ -2,24 +2,69 @@
 # Compiled and build artifacts
 *.pyc
 __pycache__/
+*.o
+*.obj
+dist/
+build/
+target/
 
 # Dependencies
-vendor/
-composer.lock
+.venv/
+venv/
+node_modules/
+.julia/
+.zig-cache/
 
 # Logs and temp files
 *.log
 *.tmp
+*.swp
+*.swo
 
 # Environment
 .env
 .env.local
-*.env.*
+.env.*
 
 # Editors
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Database
-*.sql
+# System files
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+htmlcov/
+.coverage
+
+# Python specific
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+.pytest_cache/
+.mypy_cache/
+
+# PHP specific
+*.php~
+*.php.bak
+*.php.swp
+vendor/
+composer.lock
+
+# Web build artifacts
+public/dist/
+public/build/
+assets/dist/
+assets/build/
+
+# Original rules preserved
+*.log
 ```

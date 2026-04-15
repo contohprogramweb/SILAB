@@ -55,12 +55,13 @@
                                     <a href="<?= site_url('user/edit/' . $user['id']); ?>" class="btn btn-warning btn-sm" title="Edit">
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
-                                    <a href="<?= site_url('user/delete/' . $user['id']); ?>" 
-                                       class="btn btn-danger btn-sm" 
-                                       title="Hapus"
-                                       onclick="return confirm('Apakah Anda yakin ingin menghapus user ini?')">
+                                    <button type="button" 
+                                            class="btn btn-danger btn-sm btn-delete" 
+                                            title="Hapus"
+                                            data-id="<?= $user['id']; ?>"
+                                            data-username="<?= htmlspecialchars($user['username']); ?>">
                                         <i class="fas fa-trash"></i> Hapus
-                                    </a>
+                                    </button>
                                 </td>
                             </tr>
                             <?php endforeach; ?>
@@ -74,6 +75,7 @@
 
 <script>
 $(document).ready(function() {
+    // DataTable initialization
     $('#usersTable').DataTable({
         responsive: true,
         dom: 'Bfrtip',
@@ -113,6 +115,28 @@ $(document).ready(function() {
             url: '//cdn.datatables.net/plug-ins/1.13.4/i18n/id.json'
         },
         order: [[0, 'asc']]
+    });
+
+    // SweetAlert2 confirmation for delete
+    $(document).on('click', '.btn-delete', function() {
+        var userId = $(this).data('id');
+        var username = $(this).data('username');
+        
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "User '" + username + "' akan dihapus secara permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = '<?= site_url('user/delete/'); ?>' + userId;
+            }
+        });
     });
 });
 </script>

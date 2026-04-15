@@ -176,6 +176,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="https://cdn.jsdelivr.net/npm/admin-lte@3.2/dist/js/adminlte.min.js"></script>
+<!-- SweetAlert2 - Beautiful Alert Dialogs -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- jValidate - Form Validation Plugin -->
 <script src="https://cdn.jsdelivr.net/npm/jvalidate@1.0.5/dist/jquery.jvalidate.min.js"></script>
 <!-- DataTables & Plugins -->
