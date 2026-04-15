@@ -4,9 +4,14 @@
 __pycache__/
 
 # Dependencies
-node_modules/
-venv/
-.venv/
+vendor/
+composer.lock
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Environment
 .env
 .env.local
 *.env.*
@@ -15,12 +20,6 @@ venv/
 .vscode/
 .idea/
 
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# System files
-.DS_Store
-Thumbs.db
+# Database
+*.sql
 ```
